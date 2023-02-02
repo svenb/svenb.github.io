@@ -1,5 +1,4 @@
 import { html,LitElement} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js';
-//import { litgooglemaps} from 'https://svenb.github.io/MapsPlugin/lib/lit-googlemaps.js';
 
 // define the component
 export class MapsPlugin extends LitElement {
@@ -11,7 +10,7 @@ export class MapsPlugin extends LitElement {
   // return a promise for contract changes.
   static getMetaConfig() {
     return {
-      controlName: 'Maps Stuff Testing',
+      controlName: 'MapsStuffTesting',
       fallbackDisableSubmit: false,
       version: '1.2',
       properties: {
@@ -31,7 +30,8 @@ export class MapsPlugin extends LitElement {
 
   render() {
     //return html`<p><b>Hello ${this.who}</b><p/>`;
-    return html `<script src="https://svenb.github.io/MapsPlugin/lib/lit-googlemaps.js"></script><lit-google-map api-key="${this.who}"></lit-google-map>`
+    //<script src="https://svenb.github.io/MapsPlugin/lib/lit-googlemaps.js">
+    return html `</script><lit-google-map api-key="${this.who}"></lit-google-map>`
   }
 }
 
