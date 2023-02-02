@@ -1,9 +1,9 @@
 //AIzaSyAdmcWszWFYtK0esyOlcNzsbVTi2xpcHlw
 import { html,LitElement} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js';
-import { lit-googlemaps} from 
+//import { litgooglemaps} from 'https://svenb.github.io/MapsPlugin/lib/lit-googlemaps.js';
 
 // define the component
-export class HelloWorld extends LitElement {
+export class MapsPlugin extends LitElement {
   
   static properties = {
     who: {type: String},
@@ -27,14 +27,15 @@ export class HelloWorld extends LitElement {
   
   constructor() {
     super();
-    this.who = 'World';
+    this.who = 'NO API KEY';
   }
 
   render() {
-    return html`<p><b>Hello ${this.who}</b><p/>`;
+    //return html`<p><b>Hello ${this.who}</b><p/>`;
+    return html `<script src="https://svenb.github.io/MapsPlugin/lib/lit-googlemaps.js"></script><lit-google-map api-key="${this.who}"></lit-google-map>`
   }
 }
 
 // registering the web component
 const elementName = 'hello-world';
-customElements.define(elementName, HelloWorld);
+customElements.define(elementName, MapsPlugin);
