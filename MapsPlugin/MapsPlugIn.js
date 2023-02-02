@@ -12,14 +12,14 @@ export class MapsPlugin extends LitElement {
   // return a promise for contract changes.
   static getMetaConfig() {
     return {
-      controlName: 'Hello World',
+      controlName: 'Maps Stuff Testing',
       fallbackDisableSubmit: false,
       version: '1.2',
       properties: {
         who: {
           type: 'string',
           title: 'Who',
-          description: 'Who to say hello to'
+          description: 'API Key'
         }
       }
     };
@@ -37,5 +37,5 @@ export class MapsPlugin extends LitElement {
 }
 
 // registering the web component
-const elementName = 'hello-world';
+const elementName = 'MapsPlugin';
 customElements.define(elementName, MapsPlugin);
