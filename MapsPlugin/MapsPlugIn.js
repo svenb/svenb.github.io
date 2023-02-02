@@ -36,5 +36,5 @@ export class MapsPlugin extends LitElement {
 }
 
 // registering the web component
-const elementName = 'Maps-Plugin';
+const elementName = 'maps-plugin';
 customElements.define(elementName, MapsPlugin);
