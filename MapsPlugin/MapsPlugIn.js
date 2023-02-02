@@ -1,4 +1,3 @@
-//AIzaSyAdmcWszWFYtK0esyOlcNzsbVTi2xpcHlw
 import { html,LitElement} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js';
 //import { litgooglemaps} from 'https://svenb.github.io/MapsPlugin/lib/lit-googlemaps.js';
 
@@ -37,5 +36,5 @@ export class MapsPlugin extends LitElement {
 }
 
 // registering the web component
-const elementName = 'MapsPlugin';
+const elementName = 'Maps-Plugin';
 customElements.define(elementName, MapsPlugin);
