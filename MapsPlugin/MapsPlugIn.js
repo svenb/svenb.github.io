@@ -29,9 +29,9 @@ export class MapsPlugin extends LitElement {
   }
 
   render() {
-    //return html`<p><b>Hello ${this.who}</b><p/>`;
+    return html`<p><b>Hello ${this.who}</b><p/>`;
     
-    return html `<script src='https://svenb.github.io/MapsPlugin/lib/lit-googlemaps.js'></script><lit-google-map api-key=${this.who}></lit-google-map>`
+    //return html `<script src='https://svenb.github.io/MapsPlugin/lib/lit-googlemaps.js'></script><lit-google-map api-key=${this.who}></lit-google-map>`
   }
 }
 

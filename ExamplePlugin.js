@@ -4,6 +4,7 @@ export class HelloWorld extends LitElement {
   
   static properties = {
     who: {type: String},
+    street: { type: String}
   };
   
   // return a promise for contract changes.
@@ -17,7 +18,13 @@ export class HelloWorld extends LitElement {
           type: 'string',
           title: 'Who',
           description: 'Who to say hello to'
+        },
+        street: {
+          type: 'number',
+          title: 'Number',
+          description: 'Who to say hello to'
         }
+        
       }
     };
   }
