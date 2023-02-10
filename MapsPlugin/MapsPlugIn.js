@@ -79,7 +79,7 @@ export class MapsPlugin extends LitElement {
 
   
 
-  render() {    //AIzaSyAfj3UBiLzTktElylX3hpgBmddYuH26bhI    
+  render() {        
 
     
     return html`       
