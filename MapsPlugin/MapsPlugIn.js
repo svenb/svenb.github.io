@@ -1,24 +1,35 @@
 import { html,LitElement,css} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js';
-//import 'https://cdn.jsdelivr.net/npm/lit-google-map@1.0.1/dist/lit-google-map.bundle.min.js';
 
 
 // define the component
 export class MapsPlugin extends LitElement {
   
   static properties = {
-    who: {type: String},
-    calc: {type: Number}
+    apiKey: {type: String},
+    calc: {type: Number},
+    FormattedAdress: {type: String},
+    long: {type: String}
+    
   };
 
+  static styles = css`
 
-   static styles = css`
+  .map-container {
+      overflow:hidden;
+      padding-bottom:56.25%;
+      position:relative;
+      height:0;
+  }
+  .map-container iframe{
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    position:absolute;
+  }
 
-      #map {
-        height: 400px; /* The height is 400 pixels */
-        width: 100%; /* The width is the width of the web page */
-      }
-    
-      `;
+  `;
+ 
 
   
   // return a promise for contract changes.
@@ -28,10 +39,16 @@ export class MapsPlugin extends LitElement {
       fallbackDisableSubmit: false,
       version: '1.2',
       properties: {
-        who: {
+        apiKey: {
           type: 'string',
-          title: 'Who',
-          description: 'API Key'
+          title: 'API Key',
+          description: 'Please enter your Google API Key'
+        },
+        
+        FormattedAdress: {
+          type: 'string',
+          title: 'Formatted Adress',
+          description: 'Please add from Adress Control the formatted Adress'
         }
       }
     };
@@ -42,25 +59,35 @@ export class MapsPlugin extends LitElement {
         return 5+5;
     
     }
- 
-  
-  
+
   
   constructor() {
     super();
-    this.who = 'NO API KEY TEST';   
-    this.calc = this.calculateValues();
+    //this.who = 'NO API KEY TEST';   
+    this.calc = this.calculateValues();   
     
   }
+
+
+  
 
   render() {    //AIzaSyAfj3UBiLzTktElylX3hpgBmddYuH26bhI    
 
   
     return html`
-             
+
+       
+        
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        
+        <div id="map-container-google-2" class="z-depth-1-half map-container" style="height: 500px">
+        
+        <iframe src="https://www.google.com/maps/embed/v1/place?key=${this.apiKey}&q=${this.FormattedAdress}" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
       
-    `; 
-    
+      
+    `;     
 
   }
   
