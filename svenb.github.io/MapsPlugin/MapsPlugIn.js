@@ -5,8 +5,7 @@ import { html,LitElement,css} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/all/l
 export class MapsPlugin extends LitElement {
   
   static properties = {
-    apiKey: {type: String},
-    calc: {type: Number},
+    apiKey: {type: String}, 
     FormattedAdress: {type: String},
     long: {type: String}
     
@@ -35,8 +34,9 @@ export class MapsPlugin extends LitElement {
   // return a promise for contract changes.
   static getMetaConfig() {
     return {
-      controlName: 'MapsStuffTesting',
+      controlName: 'Maps Canvas',
       fallbackDisableSubmit: false,
+      groupName: 'Google Maps',
       version: '1.2',
       properties: {
         apiKey: {
@@ -54,17 +54,25 @@ export class MapsPlugin extends LitElement {
     };
   }
 
-  calculateValues() {
 
-        return 5+5;
-    
+  checkAdress() {
+    if(this.FormattedAdress) {
+      console.log(this.FormattedAdress);      
+      return this.FormattedAdress;
     }
+    else {      
+      return "London";   
+    }
+  }     
+  
 
   
   constructor() {
     super();
-    //this.who = 'NO API KEY TEST';   
-    this.calc = this.calculateValues();   
+    this.checkAdress();
+
+    
+    //this.calc = this.calculateValues();   
     
   }
 
@@ -73,17 +81,15 @@ export class MapsPlugin extends LitElement {
 
   render() {    //AIzaSyAfj3UBiLzTktElylX3hpgBmddYuH26bhI    
 
-  
-    return html`
-
-       
+    
+    return html`       
         
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         
         <div id="map-container-google-2" class="z-depth-1-half map-container" style="height: 500px">
         
-        <iframe src="https://www.google.com/maps/embed/v1/place?key=${this.apiKey}&q=${this.FormattedAdress}" frameborder="0" style="border:0" allowfullscreen></iframe>
+        <iframe src="https://www.google.com/maps/embed/v1/place?key=${this.apiKey}&q=${this.checkAdress()}" frameborder="0" style="border:0" allowfullscreen></iframe>
         </div>
       
       
