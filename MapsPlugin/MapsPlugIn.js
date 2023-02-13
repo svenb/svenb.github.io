@@ -58,7 +58,7 @@ export class MapsPlugin extends LitElement {
           showAsRadio: false,
           verticalLayout: true,
           defaultValue: 'roadmap',
-          description: 'Choose your Map Type: roadmap,satellite,terrain or hybrid'
+          description: 'Choose your Map Type: roadmap and satellite'
         }         
         
       }
@@ -68,10 +68,7 @@ export class MapsPlugin extends LitElement {
 
   checkAdress() {
     if(this.FormattedAdress) {
-      console.log(this.FormattedAdress);      
-
-      //&maptype=satellite
-
+      console.log(this.FormattedAdress);       
       
       return html`
        
@@ -79,10 +76,7 @@ export class MapsPlugin extends LitElement {
        <iframe src="https://www.google.com/maps/embed/v1/place?key=${this.apiKey}&q=${this.FormattedAdress}&maptype=${this.maptype}" frameborder="0" style="border:0" allowfullscreen>dd</iframe>       
 
       `;
-      
-      
-      
-      //return this.FormattedAdress;
+    
     }
     else {      
       return html`
