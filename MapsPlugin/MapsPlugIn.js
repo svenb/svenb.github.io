@@ -54,7 +54,7 @@ export class MapsPlugin extends LitElement {
         maptype: {
           title: 'Map Type',
           type: 'string',
-        	enum: ['roadmap', 'satellite', 'terrain','hybrid'],
+        	enum: ['roadmap', 'satellite'],
           showAsRadio: false,
           verticalLayout: true,
           defaultValue: 'roadmap',
@@ -69,6 +69,9 @@ export class MapsPlugin extends LitElement {
   checkAdress() {
     if(this.FormattedAdress) {
       console.log(this.FormattedAdress);      
+
+      //&maptype=satellite
+
       
       return html`
        
