@@ -7,6 +7,7 @@ export class MapsPlugin extends LitElement {
   static properties = {
     apiKey: {type: String}, 
     FormattedAdress: {type: String},
+    maptype: {type: String},
     long: {type: String}
     
   };
@@ -49,7 +50,17 @@ export class MapsPlugin extends LitElement {
           type: 'string',
           title: 'Formatted Adress',
           description: 'Please add from Adress Control the formatted Adress'
-        }
+        },
+        maptype: {
+          title: 'Map Type',
+          type: 'string',
+        	enum: ['roadmap', 'satellite', 'terrain','hybrid'],
+          showAsRadio: false,
+          verticalLayout: true,
+          defaultValue: 'roadmap',
+          description: 'Choose your Map Type: roadmap,satellite,terrain or hybrid'
+        }         
+        
       }
     };
   }
@@ -62,7 +73,7 @@ export class MapsPlugin extends LitElement {
       return html`
        
        <div id="map-container-google-2" class="z-depth-1-half map-container" style="height: 500px">       
-       <iframe src="https://www.google.com/maps/embed/v1/place?key=${this.apiKey}&q=${this.FormattedAdress}" frameborder="0" style="border:0" allowfullscreen>dd</iframe>       
+       <iframe src="https://www.google.com/maps/embed/v1/place?key=${this.apiKey}&q=${this.FormattedAdress}&maptype=${this.maptype}" frameborder="0" style="border:0" allowfullscreen>dd</iframe>       
 
       `;
       
