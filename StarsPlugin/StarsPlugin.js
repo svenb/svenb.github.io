@@ -86,8 +86,8 @@ export class StarsPlugin extends LitElement {
 
 
   onClick(e) {
-
-   /* const args = {
+    /*
+    const args = {
       bubbles: true,
       cancelable: false,
       composed: true,
