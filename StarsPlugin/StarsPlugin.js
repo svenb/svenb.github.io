@@ -77,19 +77,7 @@ export class StarsPlugin extends LitElement {
   }
 
 
-  onChange(e) {
-    const args = {
-        bubbles: true,
-        cancelable: false,
-        composed: true,
-        // value coming from input change event. 
-        detail: e.target.value,
-    };
-    const event = new CustomEvent('ntx-value-change', args);
-    this.dispatchEvent(event);
-}
-
-  
+    
   constructor() {
     super();
     //this.checkAdress();
@@ -99,7 +87,17 @@ export class StarsPlugin extends LitElement {
 
   onClick(e) {
 
-      console.log("TEST" +  e);
+   /* const args = {
+      bubbles: true,
+      cancelable: false,
+      composed: true,
+      // value coming from input change event. 
+      detail:e,
+    };
+    const event = new CustomEvent('ntx-value-change', args);
+    this.dispatchEvent(event);
+*/
+    console.log("TEST" +  e);
 
   }
 
