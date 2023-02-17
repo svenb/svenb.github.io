@@ -1,33 +1,13 @@
-import { html,LitElement,css} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js';
+import { html,LitElement} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js';
 
 
 // define the component
 export class MediaPlayerPlugIn extends LitElement {
   
   static properties = {
-    video_src: {type: String}, 
+    videosrc: {type: String}, 
     Platform: {type: String}   
   };
-
-  static styles = css`
-
-  .map-container {
-      overflow:hidden;
-      padding-bottom:56.25%;
-      position:relative;
-      height:0;
-  }
-  .map-container iframe{
-    left:0;
-    top:0;
-    height:100%;
-    width:100%;
-    position:absolute;
-  }
-
-  `;
- 
-
   
   // return a promise for contract changes.
   static getMetaConfig() {
@@ -37,7 +17,7 @@ export class MediaPlayerPlugIn extends LitElement {
       groupName: 'Media Player',
       version: '1.2',
       properties: {
-        video_src: {
+        videosrc: {
           type: 'string',
           title: 'Media Source',
           description: 'Youtube embeded link'
@@ -58,14 +38,16 @@ export class MediaPlayerPlugIn extends LitElement {
 
 
   checkAdress() {
-     if(this.video_src) {
-      console.log(this.video_src);       
+     console.log("ha" + this.videosrc);   
+     console.log(this.Platform);
+     if(this.videosrc) {
+         
       
       return html`
                 
-                <div class="plyr__video-embed" id="player">
+            <div class="plyr__video-embed" id="player">
             <iframe
-                src="https://www.youtube.com/embed/bTqVqk7FSmY?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1"
+                src="${this.videosrc}?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1"
                 allowfullscreen
                 allowtransparency
                 allow="autoplay"
@@ -76,7 +58,7 @@ export class MediaPlayerPlugIn extends LitElement {
     }
     else {      
       return html`
-        <p>Bitte geben Sie ein Video ein / Please enter a source  </p>  
+        <p>Bitte geben Sie ein Video ein / Please enter a source </p>  
       `;   
     }
   }     
@@ -85,17 +67,14 @@ export class MediaPlayerPlugIn extends LitElement {
   
   constructor() {
     super();
-    this.checkAdress();
-
-    
-    //this.calc = this.calculateValues();   
+    this.checkAdress(); 
     
   }
 
 
   headerTemplate() {
-    return html` <link rel="stylesheet" href="https://cdn.plyr.io/3.7.3/plyr.css" integrity="sha384-SJV3P4M7HAy7F55UGLwv5aE/9KoVGctCtTJkEl7eMnHsZyDwTaWHXKZ6IGB9JRIn" crossorigin="anonymous">
-                  <script src="https://cdn.plyr.io/3.7.3/plyr.js" integrity="sha384-33jVIndfkOX7H37cczCzt4rl3sbeUuYt1Qav5aQhKxf74q6Hz4dot4A/yYXZxF36" crossorigin="anonymous"></script>            
+    return html` <link rel="stylesheet" href="https://cdn.plyr.io/3.7.3/plyr.css">
+                  <script src="https://cdn.plyr.io/3.7.3/plyr.js" integrity="sha384-33jVIndfkOX7H37cczCzt4rl3sbeUuYt1Qav5aQhKxf74q6Hz4dot4A/yYXZxF36" crossorigin="anonymous"></script>         
    
                 
                 `;
