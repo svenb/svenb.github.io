@@ -2,7 +2,7 @@ import { html,LitElement, css} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/all/
 
 
 // define the component
-export class SnakePlugIn extends LitElement {
+export class SnakePlugin extends LitElement {
   
   static properties = {
     Score: {type: String}    
@@ -130,4 +130,4 @@ export class SnakePlugIn extends LitElement {
 
 // registering the web component
 const elementName = 'snake-plugin';
-customElements.define(elementName, SnakePlugIn);
+customElements.define(elementName, SnakePlugin);
