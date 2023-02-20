@@ -67,11 +67,21 @@ export class SnakePlugIn extends LitElement {
   }
 
 
-  checkAdress() {
+  game() {
      
       
       return html`
-                
+            <div class="scoreDisplay"></div>
+            <div class="grid"></div>
+            <div class="button">
+                <button class="top">top</button>
+                <button class="bottom">bottom</button>
+                <button class="left">left</button>
+                <button class="right">right</button>
+            </div>
+            <div class="popup">
+                <button class="playAgain">play Again</button>     
+            </div>
            
 
       `;
@@ -90,8 +100,9 @@ export class SnakePlugIn extends LitElement {
 
   headerTemplate() {
     return html` 
-                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>       
-      `;
+    <script src="https://svenb.github.io/SnakePlugIn/snake.js" integrity="sha384-a3f1HVzUc/9G+6JdjLCYqIsUhCrGeYUofo3dAQKULrMEwhf41Dkr6yt7p1mAv/IK" crossorigin="anonymous"></script>            
+    
+    `;
   }
 
   footerTemplate() {
@@ -107,7 +118,7 @@ export class SnakePlugIn extends LitElement {
     return html`       
         
            ${this.headerTemplate()}
-           ${this.checkAdress()} 
+           ${this.game()} 
            ${this.footerTemplate()}
           
       
