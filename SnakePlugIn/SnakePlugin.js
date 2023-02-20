@@ -93,7 +93,7 @@ export class SnakePlugin extends LitElement {
   
   constructor() {
     super();
-    this.checkAdress(); 
+    this.game(); 
     
   }
 
