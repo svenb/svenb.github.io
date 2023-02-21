@@ -8,7 +8,8 @@ export class MapsPlugin extends LitElement {
     apiKey: {type: String}, 
     FormattedAdress: {type: String},
     maptype: {type: String},
-    long: {type: String}
+    long: {type: String}, 
+    zoom: {type: String}
     
   };
 
@@ -39,6 +40,7 @@ export class MapsPlugin extends LitElement {
       fallbackDisableSubmit: false,
       groupName: 'Google Maps',
       version: '1.2',
+      pluginAuthor: 'Sven Berling',
       properties: {
         apiKey: {
           type: 'string',
@@ -59,7 +61,16 @@ export class MapsPlugin extends LitElement {
           verticalLayout: true,
           defaultValue: 'roadmap',
           description: 'Choose your Map Type: roadmap and satellite'
-        }         
+        },
+        zoom: {
+          title: 'Zoom',
+          type: 'string',
+        	enum: ['1', '2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','21'],
+          showAsRadio: false,
+          verticalLayout: true,
+          defaultValue: '11',
+          description: 'Values from 0 (the whole world) to 21 (individual buildings). The upper limit may vary depending on the map data for the selected location.'
+        }   
         
       }
     };
@@ -73,7 +84,7 @@ export class MapsPlugin extends LitElement {
       return html`
        
        <div id="map-container-google-2" class="z-depth-1-half map-container" style="height: 500px">       
-       <iframe src="https://www.google.com/maps/embed/v1/place?key=${this.apiKey}&q=${this.FormattedAdress}&maptype=${this.maptype}" frameborder="0" style="border:0" allowfullscreen>dd</iframe>       
+       <iframe src="https://www.google.com/maps/embed/v1/place?key=${this.apiKey}&q=${this.FormattedAdress}&maptype=${this.maptype}&zoom=${this.zoom}" frameborder="0" style="border:0" allowfullscreen>dd</iframe>       
 
       `;
     
