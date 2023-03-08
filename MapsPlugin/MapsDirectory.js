@@ -53,12 +53,12 @@ export class DirectionsPlugin extends LitElement {
         
         origin: {
           type: 'string',
-          title: 'Formatted Adress (orgin)',
+          title: 'Formatted Adress  orgin',
           description: 'Defines the starting point from which to display directions.'
         },
         destination: {
             type: 'string',
-            title: 'Formatted Adress (destination)',
+            title: 'Formatted Adress  destination',
             description: 'Defines the end point of the directions.'
           },
         maptype: {
@@ -80,7 +80,7 @@ export class DirectionsPlugin extends LitElement {
             description: 'Specifies features to avoid in directions. Note that this doesnt preclude routes that include the restricted feature(s); it biases the result to more favorable routes.'
           },
           mode: {
-            title: 'Defines the method of travel.',
+            title: 'Defines the method of travel',
             type: 'string',
               enum: ['driving', 'walking','bicycling','transit','flying'],
             showAsRadio: false,
