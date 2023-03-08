@@ -39,7 +39,7 @@ export class MapsPlugin extends LitElement {
   // return a promise for contract changes.
   static getMetaConfig() {
     return {
-      controlName: 'Maps Canvas',
+      controlName: 'Direction',
       fallbackDisableSubmit: false,
       groupName: 'Google Maps',
       version: '1.2',
