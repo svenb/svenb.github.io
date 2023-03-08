@@ -56,9 +56,6 @@ export class WebcamPlugIn extends LitElement {
                     });
                 }
             </script>
-
-
-
       `;  
     
   }     

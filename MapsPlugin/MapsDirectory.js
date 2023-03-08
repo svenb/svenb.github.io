@@ -6,10 +6,13 @@ export class MapsPlugin extends LitElement {
   
   static properties = {
     apiKey: {type: String}, 
-    FormattedAdress: {type: String},
+    origin: {type: String},
+    destination: {type: String},
     maptype: {type: String},
     long: {type: String}, 
-    zoom: {type: String}
+    zoom: {type: String},
+    avoid: {type: String},
+    mode: {type: String}
     
   }; 
 
@@ -48,11 +51,16 @@ export class MapsPlugin extends LitElement {
           description: 'Please enter your Google API Key'
         },
         
-        FormattedAdress: {
+        origin: {
           type: 'string',
-          title: 'Formatted Adress',
-          description: 'Please add from Adress Control the formatted Adress'
+          title: 'Formatted Adress (orgin)',
+          description: 'Defines the starting point from which to display directions.'
         },
+        destination: {
+            type: 'string',
+            title: 'Formatted Adress (destination)',
+            description: 'Defines the end point of the directions.'
+          },
         maptype: {
           title: 'Map Type',
           type: 'string',
@@ -62,6 +70,25 @@ export class MapsPlugin extends LitElement {
           defaultValue: 'roadmap',
           description: 'Choose your Map Type: roadmap and satellite'
         },
+        avoid: {
+            title: 'Avoid on Route',
+            type: 'string',
+              enum: ['tolls', 'ferries','highways'],
+            showAsRadio: false,
+            verticalLayout: true,
+            defaultValue: 'tolls',
+            description: 'Specifies features to avoid in directions. Note that this doesnt preclude routes that include the restricted feature(s); it biases the result to more favorable routes.'
+          },
+          mode: {
+            title: 'Defines the method of travel.',
+            type: 'string',
+              enum: ['driving', 'walking','bicycling','transit','flying'],
+            showAsRadio: false,
+            verticalLayout: true,
+            defaultValue: 'driving',
+            description: 'Defines the method of travel. If no mode is specified the Maps Embed API will show one or more of the most relevant modes for the specified route.'
+          },
+        
         zoom: {
           title: 'Zoom',
           type: 'string',
@@ -78,13 +105,13 @@ export class MapsPlugin extends LitElement {
 
 
   checkAdress() {
-    if(this.FormattedAdress) {
-      console.log(this.FormattedAdress);       
+    if(this.origin) {
+      console.log(this.origin);       
       
       return html`
        
        <div id="map-container-google-2" class="z-depth-1-half map-container" style="height: 500px">       
-       <iframe src="https://www.google.com/maps/embed/v1/place?key=${this.apiKey}&q=${this.FormattedAdress}&maptype=${this.maptype}&zoom=${this.zoom}" frameborder="0" style="border:0" allowfullscreen>dd</iframe>       
+       <iframe src="https://www.google.com/maps/embed/v1/directions?key=${this.apiKey}&origin=${this.origin}&destination=${this.destination}&maptype=${this.maptype}&zoom=${this.zoom}" frameborder="0" style="border:0" allowfullscreen>dd</iframe>       
 
       `;
     
