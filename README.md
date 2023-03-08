@@ -6,7 +6,8 @@ This Respository includes a few NAC plugins I came up with, feel free to use the
 
 -> MediaPlayer PlugIn\
 -> Star Rating PlugIn\
--> Google Maps PlugIn
+-> Google Maps PlugIn\
+-> Google Maps Directions PlugIn
 
 ## Authors
 
