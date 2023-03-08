@@ -2,7 +2,7 @@ import { html,LitElement,css} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/all/l
 
 
 // define the component
-export class MapsPlugin extends LitElement {
+export class DirectionsPlugin extends LitElement {
   
   static properties = {
     apiKey: {type: String}, 
@@ -168,5 +168,5 @@ export class MapsPlugin extends LitElement {
 }
 
 // registering the web component
-const elementName = 'maps-plugin';
-customElements.define(elementName, MapsPlugin);
+const elementName = 'directions-plugin';
+customElements.define(elementName, DirectionsPlugin);
