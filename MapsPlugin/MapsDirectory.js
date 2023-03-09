@@ -53,12 +53,12 @@ export class DirectionsPlugin extends LitElement {
         
         origin: {
           type: 'string',
-          title: 'Formatted Adress  orgin',
+          title: 'Adress Orgin',
           description: 'Defines the starting point from which to display directions.'
         },
         destination: {
             type: 'string',
-            title: 'Formatted Adress  destination',
+            title: 'Adress destination',
             description: 'Defines the end point of the directions.'
           },
         maptype: {
