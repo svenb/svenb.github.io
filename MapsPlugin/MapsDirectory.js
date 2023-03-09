@@ -49,16 +49,15 @@ export class DirectionsPlugin extends LitElement {
           type: 'string',
           title: 'API Key',
           description: 'Please enter your Google API Key'
-        },
-        
+        },        
         origin: {
-          type: 'string',
           title: 'Adress Orgin',
+          type: 'string',          
           description: 'Defines the starting point from which to display directions.'
         },
         destination: {
-            type: 'string',
-            title: 'Adress destination',
+          title: 'Adress destination',
+            type: 'string',           
             description: 'Defines the end point of the directions.'
           },
         maptype: {
