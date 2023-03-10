@@ -39,7 +39,7 @@ export class DirectionsPlugin extends LitElement {
   // return a promise for contract changes.
   static getMetaConfig() {
     return {
-      controlName: 'Direction',
+      controlName: 'Maps Directions',
       fallbackDisableSubmit: false,
       groupName: 'Google Maps',
       version: '1.2',
