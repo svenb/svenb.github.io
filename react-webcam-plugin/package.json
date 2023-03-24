@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "react-to-webcomponent": "^1.7.3"
+  }
+}
