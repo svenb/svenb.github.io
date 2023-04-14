@@ -1,0 +1,347 @@
+{
+  "swagger": "2.0",
+  "x-ntx-render-version": 2,
+  "info": {
+    "version": "0.0.5",
+    "title": "Blumatix AI API",
+    "description": "Extracts invoice features of a provided invoice."
+  },
+  "host": "api.bludelta.ai",
+  "basePath": "/v1-18",
+  "schemes": ["https"],
+  "produces": ["application/json"],
+  "paths": {
+    "/invoicedetail/detect": {
+      "post": {
+        "tags": ["invoicedetail"],
+        "security": [
+          {
+            "myApiKey": []
+          }
+        ],
+        "summary": "Extracts invoice",
+        "description": "Extracts invoice features of a provided invoice.",
+        "operationId": "DetectInvoiceRequestdetect_Post",
+        "parameters": [
+          {
+            "name": "body",
+            "x-ntx-summary": "Input",
+            "x-ntx-control": "tree",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["Invoice"],
+              "properties": {
+                "Filter": {
+                  "type": "number",
+                  "x-ntx-visibility": "internal",
+                  "x-ntx-initial": 0,
+                  "default": 0
+                },
+                "Invoice": {
+                  "type": "string",
+                  "format": "byte",
+                  "x-ntx-summary": "Invoice file",
+                  "description": "The file to be OCR's"
+                }
+              }
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "InvoiceDetailTypePredictions": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/prediction"
+                  }
+                },
+                "PredictionGroups": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "Type": { "type": "number" },
+                      "TypeName": { "type": "string" },
+                      "InvoiceDetailTypePredictions": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/definitions/prediction"
+                        }
+                      }
+                    }
+                  }
+                },
+                "Sender": {
+                  "$ref": "#/definitions/person"
+                },
+                "Receiver": {
+                  "$ref": "#/definitions/person"
+                },
+                "LineItemTable": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/LineItems"
+                  }
+                },
+                "Contacts": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/person"
+                  }
+                },
+                "DocumentResolution": {
+                  "type": "number"
+                },
+                "DocumentFormat": {
+                  "type": "string"
+                },
+                "Language": {
+                  "type": "string"
+                },
+                "Countries": {
+                  "type": "string"
+                },
+                "IsQualityOk": {
+                  "type": "boolean"
+                },
+                "InvoiceState": {
+                  "type": "number"
+                },
+                "Confidence": {
+                  "type": "number"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invoice format error"
+          },
+          "401": {
+            "description": "Unauthorized. Invalid ApiKey (or invalid ApiIdentifier)"
+          },
+          "403": {
+            "description": "Customer is not allowed to make any predictions"
+          },
+          "500": {
+            "description": "Oops, something broke"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "address": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/coordinates"
+        },
+        {
+          "type": "object",
+          "x-ntx-control": "tree",
+          "properties": {
+            "Street": {
+              "$ref": "#/definitions/propertyText"
+            },
+            "ZipCode": {
+              "$ref": "#/definitions/propertyText"
+            },
+            "City": {
+              "$ref": "#/definitions/propertyText"
+            },
+            "Country": {
+              "$ref": "#/definitions/propertyText"
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "person": {
+      "type": "object",
+      "x-ntx-control": "tree",
+      "properties": {
+        "Name": {
+          "$ref": "#/definitions/propertyText"
+        },
+        "Address": {
+          "$ref": "#/definitions/address"
+        },
+        "Score": {
+          "type": "number"
+        },
+        "WebsiteUrl": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "Email": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/propertyText"
+          }
+        },
+        "Phone": {
+          "$ref": "#/definitions/propertyText"
+        },
+        "Fax": {
+          "$ref": "#/definitions/propertyText"
+        }
+      },
+      "additionalProperties": false
+    },
+    "LineItems": {
+      "type": "object",
+      "x-ntx-control": "tree",
+      "properties": {
+        "PositionNumber": {
+          "type": "number"
+        },
+        "PositionId": {
+          "$ref": "#/definitions/propertyText"
+        },
+        "ItemId": {
+          "$ref": "#/definitions/propertyText"
+        },
+        "Description": {
+          "$ref": "#/definitions/propertyText"
+        },
+        "OrderId": {
+          "$ref": "#/definitions/propertyText"
+        },
+        "DeliveryId": {
+          "$ref": "#/definitions/propertyText"
+        },
+        "DeliveryDate": {
+          "$ref": "#/definitions/propertyText"
+        },
+        "Quantity": {
+          "$ref": "#/definitions/propertyText"
+        },
+        "Unit": {
+          "$ref": "#/definitions/propertyText"
+        },
+        "UnitPrice": {
+          "$ref": "#/definitions/propertyText"
+        },
+        "VatRate": {
+          "$ref": "#/definitions/propertyText"
+        },
+        "Discount": {
+          "$ref": "#/definitions/propertyText"
+        },
+        "TotalAmount": {
+          "$ref": "#/definitions/propertyText"
+        },
+        "Score": {
+          "type": "number"
+        },
+        "X": {
+          "type": "number"
+        },
+        "Y": {
+          "type": "number"
+        },
+        "Width": {
+          "type": "number"
+        },
+        "Height": {
+          "type": "number"
+        }
+      },
+      "additionalProperties": false
+    },
+    "prediction": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/propertyBase"
+        },
+        {
+          "type": "object",
+          "x-ntx-control": "tree",
+          "properties": {
+            "Type": {
+              "type": "number"
+            },
+            "TypeName": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "propertyText": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/propertyBase"
+        },
+        {
+          "type": "object",
+          "x-ntx-control": "tree",
+          "properties": {
+            "Name": {
+              "type": "string"
+            },
+            "Text": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "propertyBase": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/coordinates"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "Value": {
+              "type": "string"
+            },
+            "Score": {
+              "type": "number"
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "coordinates": {
+      "type": "object",
+      "x-ntx-control": "tree",
+      "properties": {
+        "X": {
+          "type": "number"
+        },
+        "Y": {
+          "type": "number"
+        },
+        "Width": {
+          "type": "number"
+        },
+        "Height": {
+          "type": "number"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "securityDefinitions": {
+    "myAPIAuth": {
+      "type": "apiKey",
+      "name": "X-ApiKey",
+      "in": "header"
+    }
+  }
+}
