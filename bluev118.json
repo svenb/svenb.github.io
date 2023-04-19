@@ -27,9 +27,26 @@
             "name": "body",
             "x-ntx-summary": "Input",
             "x-ntx-control": "tree",
+            "required": true,
             "in": "body",
             "schema": {
-              "$ref": "#/definitions/ExtractInvoiceDataInput"
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["Invoice"],
+              "properties": {
+                "Filter": {
+                  "type": "number",
+                  "x-ntx-visibility": "internal",
+                  "x-ntx-initial": 0,
+                  "default": 0
+                },
+                "Invoice": {
+                  "type": "string",
+                  "format": "byte",
+                  "x-ntx-summary": "Invoice file",
+                  "description": "The file to be OCR's"
+                }
+              }
             }
           }
         ],
