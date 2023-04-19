@@ -21,7 +21,7 @@
         ],
         "summary": "Extracts invoice",
         "description": "Extracts invoice features of a provided invoice.",
-        "operationId": "DetectInvoiceRequestdetect_Post",
+        "operationId": "ExtractInvoiceData",
         "parameters": [
           {
             "name": "body",
@@ -29,23 +29,7 @@
             "x-ntx-control": "tree",
             "in": "body",
             "schema": {
-              "type": "object",
-              "additionalProperties": false,
-              "required": ["Invoice"],
-              "properties": {
-                "Filter": {
-                  "type": "number",
-                  "x-ntx-visibility": "internal",
-                  "x-ntx-initial": 0,
-                  "default": 0
-                },
-                "Invoice": {
-                  "type": "string",
-                  "format": "byte",
-                  "x-ntx-summary": "Invoice file",
-                  "description": "The file to be OCR's"
-                }
-              }
+              "$ref": "#/definitions/ExtractInvoiceDataInput"
             }
           }
         ],
@@ -54,248 +38,7 @@
           "200": {
             "description": "Successful Response",
             "schema": {
-              "type": "object",
-              "properties": {
-                "InvoiceDetailTypePredictions": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/prediction"
-                  }
-                },
-                "PredictionGroups": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "Type": { "type": "number" },
-                      "TypeName": { "type": "string" },
-                      "InvoiceDetailTypePredictions": {
-                        "type": "array",
-                        "items": {
-                          "$ref": "#/definitions/prediction"
-                        }
-                      }
-                    }
-                  }
-                },
-                "Sender": {
-                  "$ref": "#/definitions/person"
-                },
-                "Receiver": {
-                  "$ref": "#/definitions/person"
-                },
-                "LineItemTable": {
-                  "type": "object",
-                  "properties": {
-                    "LineItems": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "PositionNumber": {
-                            "type": "number"
-                          },
-                          "ItemId": {
-                            "type": "object",
-                            "properties": {
-                              "Name": {
-                                "type": "string"
-                              },
-                              "Text": {
-                                "type": "string"
-                              },
-                              "Value": {
-                                "type": "string"
-                              }
-                            }
-                          },
-                          "Description": {
-                            "type": "object",
-                            "properties": {
-                              "Name": {
-                                "type": "string"
-                              },
-                              "Text": {
-                                "type": "string"
-                              },
-                              "Value": {
-                                "type": "string"
-                              }
-                            }
-                          },
-                          "Quantity": {
-                            "type": "object",
-                            "properties": {
-                              "Name": {
-                                "type": "string"
-                              },
-                              "Text": {
-                                "type": "string"
-                              },
-                              "Value": {
-                                "type": "string"
-                              }
-                            }
-                          },
-                          "UnitPrice": {
-                            "type": "object",
-                            "properties": {
-                              "Name": {
-                                "type": "string"
-                              },
-                              "Text": {
-                                "type": "string"
-                              },
-                              "Value": {
-                                "type": "string"
-                              }
-                            }
-                          },
-                          "TotalAmount": {
-                            "type": "object",
-                            "properties": {
-                              "Name": {
-                                "type": "string"
-                              },
-                              "Text": {
-                                "type": "string"
-                              },
-                              "Value": {
-                                "type": "string"
-                              }
-                            }
-                          },
-                          "OrderId": {
-                            "type": "object",
-                            "properties": {
-                              "Name": {
-                                "type": "string"
-                              },
-                              "Text": {
-                                "type": "string"
-                              },
-                              "Value": {
-                                "type": "string"
-                              }
-                            }
-                          },
-                          "DeliveryId": {
-                            "type": "object",
-                            "properties": {
-                              "Name": {
-                                "type": "string"
-                              },
-                              "Text": {
-                                "type": "string"
-                              },
-                              "Value": {
-                                "type": "string"
-                              }
-                            }
-                          },
-                          "Unit": {
-                            "type": "object",
-                            "properties": {
-                              "Name": {
-                                "type": "string"
-                              },
-                              "Text": {
-                                "type": "string"
-                              },
-                              "Value": {
-                                "type": "string"
-                              }
-                            }
-                          },
-                          "VatRate": {
-                            "type": "object",
-                            "properties": {
-                              "Name": {
-                                "type": "string"
-                              },
-                              "Text": {
-                                "type": "string"
-                              },
-                              "Value": {
-                                "type": "string"
-                              }
-                            }
-                          },
-                          "DeliveryDate": {
-                            "type": "object",
-                            "properties": {
-                              "Name": {
-                                "type": "string"
-                              },
-                              "Text": {
-                                "type": "string"
-                              },
-                              "Value": {
-                                "type": "string"
-                              }
-                            }
-                          },
-                          "Discount": {
-                            "type": "object",
-                            "properties": {
-                              "Name": {
-                                "type": "string"
-                              },
-                              "Text": {
-                                "type": "string"
-                              },
-                              "Value": {
-                                "type": "string"
-                              }
-                            }
-                          },
-                          "PositionId": {
-                            "type": "object",
-                            "properties": {
-                              "Name": {
-                                "type": "string"
-                              },
-                              "Text": {
-                                "type": "string"
-                              },
-                              "Value": {
-                                "type": "string"
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                },
-                "Contacts": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/person"
-                  }
-                },
-                "DocumentResolution": {
-                  "type": "number"
-                },
-                "DocumentFormat": {
-                  "type": "string"
-                },
-                "Language": {
-                  "type": "string"
-                },
-                "Countries": {
-                  "type": "string"
-                },
-                "IsQualityOk": {
-                  "type": "boolean"
-                },
-                "InvoiceState": {
-                  "type": "number"
-                },
-                "Confidence": {
-                  "type": "number"
-                }
-              }
+              "$ref": "#/definitions/InvoiceData"
             }
           },
           "400": {
@@ -315,6 +58,269 @@
     }
   },
   "definitions": {
+    "InvoiceData": {
+      "type": "object",
+      "properties": {
+        "InvoiceDetailTypePredictions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/prediction"
+          }
+        },
+        "PredictionGroups": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "Type": { "type": "number" },
+              "TypeName": { "type": "string" },
+              "InvoiceDetailTypePredictions": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/prediction"
+                }
+              }
+            }
+          }
+        },
+        "Sender": {
+          "$ref": "#/definitions/person"
+        },
+        "Receiver": {
+          "$ref": "#/definitions/person"
+        },
+        "LineItemTable": {
+          "type": "object",
+          "properties": {
+            "LineItems": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "PositionNumber": {
+                    "type": "number"
+                  },
+                  "ItemId": {
+                    "type": "object",
+                    "properties": {
+                      "Name": {
+                        "type": "string"
+                      },
+                      "Text": {
+                        "type": "string"
+                      },
+                      "Value": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "Description": {
+                    "type": "object",
+                    "properties": {
+                      "Name": {
+                        "type": "string"
+                      },
+                      "Text": {
+                        "type": "string"
+                      },
+                      "Value": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "Quantity": {
+                    "type": "object",
+                    "properties": {
+                      "Name": {
+                        "type": "string"
+                      },
+                      "Text": {
+                        "type": "string"
+                      },
+                      "Value": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "UnitPrice": {
+                    "type": "object",
+                    "properties": {
+                      "Name": {
+                        "type": "string"
+                      },
+                      "Text": {
+                        "type": "string"
+                      },
+                      "Value": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "TotalAmount": {
+                    "type": "object",
+                    "properties": {
+                      "Name": {
+                        "type": "string"
+                      },
+                      "Text": {
+                        "type": "string"
+                      },
+                      "Value": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "OrderId": {
+                    "type": "object",
+                    "properties": {
+                      "Name": {
+                        "type": "string"
+                      },
+                      "Text": {
+                        "type": "string"
+                      },
+                      "Value": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "DeliveryId": {
+                    "type": "object",
+                    "properties": {
+                      "Name": {
+                        "type": "string"
+                      },
+                      "Text": {
+                        "type": "string"
+                      },
+                      "Value": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "Unit": {
+                    "type": "object",
+                    "properties": {
+                      "Name": {
+                        "type": "string"
+                      },
+                      "Text": {
+                        "type": "string"
+                      },
+                      "Value": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "VatRate": {
+                    "type": "object",
+                    "properties": {
+                      "Name": {
+                        "type": "string"
+                      },
+                      "Text": {
+                        "type": "string"
+                      },
+                      "Value": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "DeliveryDate": {
+                    "type": "object",
+                    "properties": {
+                      "Name": {
+                        "type": "string"
+                      },
+                      "Text": {
+                        "type": "string"
+                      },
+                      "Value": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "Discount": {
+                    "type": "object",
+                    "properties": {
+                      "Name": {
+                        "type": "string"
+                      },
+                      "Text": {
+                        "type": "string"
+                      },
+                      "Value": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "PositionId": {
+                    "type": "object",
+                    "properties": {
+                      "Name": {
+                        "type": "string"
+                      },
+                      "Text": {
+                        "type": "string"
+                      },
+                      "Value": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "Contacts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/person"
+          }
+        },
+        "DocumentResolution": {
+          "type": "number"
+        },
+        "DocumentFormat": {
+          "type": "string"
+        },
+        "Language": {
+          "type": "string"
+        },
+        "Countries": {
+          "type": "string"
+        },
+        "IsQualityOk": {
+          "type": "boolean"
+        },
+        "InvoiceState": {
+          "type": "number"
+        },
+        "Confidence": {
+          "type": "number"
+        }
+      }
+    },
+    "ExtractInvoiceDataInput": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["Invoice"],
+      "properties": {
+        "Filter": {
+          "type": "number",
+          "x-ntx-visibility": "internal",
+          "x-ntx-initial": 0,
+          "default": 0
+        },
+        "Invoice": {
+          "type": "string",
+          "format": "byte",
+          "x-ntx-summary": "Invoice file",
+          "description": "The file to be OCR's"
+        }
+      }
+    },
     "address": {
       "allOf": [
         {
