@@ -8,8 +8,12 @@
   },
   "host": "api.bludelta.ai",
   "basePath": "/v1-18",
-  "schemes": ["https"],
-  "produces": ["application/json"],
+  "schemes": [
+    "https"
+  ],
+  "produces": [
+    "application/json"
+  ],
   "security": [
     {
       "myAPIAuth": []
@@ -18,7 +22,9 @@
   "paths": {
     "/invoicedetail/detect": {
       "post": {
-        "tags": ["invoicedetail"],
+        "tags": [
+          "invoicedetail"
+        ],
         "summary": "Extracts invoice",
         "description": "Extracts invoice features of a provided invoice.",
         "operationId": "ExtractInvoiceData",
@@ -33,7 +39,9 @@
             }
           }
         ],
-        "produces": ["application/json"],
+        "produces": [
+          "application/json"
+        ],
         "responses": {
           "200": {
             "description": "Successful Response",
@@ -263,180 +271,7 @@
             "LineItems": {
               "type": "array",
               "items": {
-                "type": "object",
-                "properties": {
-                  "PositionNumber": {
-                    "type": "number"
-                  },
-                  "ItemId": {
-                    "type": "object",
-                    "properties": {
-                      "Name": {
-                        "type": "string"
-                      },
-                      "Text": {
-                        "type": "string"
-                      },
-                      "Value": {
-                        "type": "string"
-                      }
-                    }
-                  },
-                  "Description": {
-                    "type": "object",
-                    "properties": {
-                      "Name": {
-                        "type": "string"
-                      },
-                      "Text": {
-                        "type": "string"
-                      },
-                      "Value": {
-                        "type": "string"
-                      }
-                    }
-                  },
-                  "Quantity": {
-                    "type": "object",
-                    "properties": {
-                      "Name": {
-                        "type": "string"
-                      },
-                      "Text": {
-                        "type": "string"
-                      },
-                      "Value": {
-                        "type": "string"
-                      }
-                    }
-                  },
-                  "UnitPrice": {
-                    "type": "object",
-                    "properties": {
-                      "Name": {
-                        "type": "string"
-                      },
-                      "Text": {
-                        "type": "string"
-                      },
-                      "Value": {
-                        "type": "string"
-                      }
-                    }
-                  },
-                  "TotalAmount": {
-                    "type": "object",
-                    "properties": {
-                      "Name": {
-                        "type": "string"
-                      },
-                      "Text": {
-                        "type": "string"
-                      },
-                      "Value": {
-                        "type": "string"
-                      }
-                    }
-                  },
-                  "OrderId": {
-                    "type": "object",
-                    "properties": {
-                      "Name": {
-                        "type": "string"
-                      },
-                      "Text": {
-                        "type": "string"
-                      },
-                      "Value": {
-                        "type": "string"
-                      }
-                    }
-                  },
-                  "DeliveryId": {
-                    "type": "object",
-                    "properties": {
-                      "Name": {
-                        "type": "string"
-                      },
-                      "Text": {
-                        "type": "string"
-                      },
-                      "Value": {
-                        "type": "string"
-                      }
-                    }
-                  },
-                  "Unit": {
-                    "type": "object",
-                    "properties": {
-                      "Name": {
-                        "type": "string"
-                      },
-                      "Text": {
-                        "type": "string"
-                      },
-                      "Value": {
-                        "type": "string"
-                      }
-                    }
-                  },
-                  "VatRate": {
-                    "type": "object",
-                    "properties": {
-                      "Name": {
-                        "type": "string"
-                      },
-                      "Text": {
-                        "type": "string"
-                      },
-                      "Value": {
-                        "type": "string"
-                      }
-                    }
-                  },
-                  "DeliveryDate": {
-                    "type": "object",
-                    "properties": {
-                      "Name": {
-                        "type": "string"
-                      },
-                      "Text": {
-                        "type": "string"
-                      },
-                      "Value": {
-                        "type": "string"
-                      }
-                    }
-                  },
-                  "Discount": {
-                    "type": "object",
-                    "properties": {
-                      "Name": {
-                        "type": "string"
-                      },
-                      "Text": {
-                        "type": "string"
-                      },
-                      "Value": {
-                        "type": "string"
-                      }
-                    }
-                  },
-                  "PositionId": {
-                    "type": "object",
-                    "properties": {
-                      "Name": {
-                        "type": "string"
-                      },
-                      "Text": {
-                        "type": "string"
-                      },
-                      "Value": {
-                        "type": "string"
-                      }
-                    }
-                  }
-                }
+                "$ref": "#/definitions/LineItem"
               }
             }
           }
@@ -470,9 +305,187 @@
         }
       }
     },
+    "LineItem": {
+      "type": "object",
+      "properties": {
+        "PositionNumber": {
+          "type": "number"
+        },
+        "ItemId": {
+          "type": "object",
+          "properties": {
+            "Name": {
+              "type": "string"
+            },
+            "Text": {
+              "type": "string"
+            },
+            "Value": {
+              "type": "string"
+            }
+          }
+        },
+        "Description": {
+          "type": "object",
+          "properties": {
+            "Name": {
+              "type": "string"
+            },
+            "Text": {
+              "type": "string"
+            },
+            "Value": {
+              "type": "string"
+            }
+          }
+        },
+        "Quantity": {
+          "type": "object",
+          "properties": {
+            "Name": {
+              "type": "string"
+            },
+            "Text": {
+              "type": "string"
+            },
+            "Value": {
+              "type": "string"
+            }
+          }
+        },
+        "UnitPrice": {
+          "type": "object",
+          "properties": {
+            "Name": {
+              "type": "string"
+            },
+            "Text": {
+              "type": "string"
+            },
+            "Value": {
+              "type": "string"
+            }
+          }
+        },
+        "TotalAmount": {
+          "type": "object",
+          "properties": {
+            "Name": {
+              "type": "string"
+            },
+            "Text": {
+              "type": "string"
+            },
+            "Value": {
+              "type": "string"
+            }
+          }
+        },
+        "OrderId": {
+          "type": "object",
+          "properties": {
+            "Name": {
+              "type": "string"
+            },
+            "Text": {
+              "type": "string"
+            },
+            "Value": {
+              "type": "string"
+            }
+          }
+        },
+        "DeliveryId": {
+          "type": "object",
+          "properties": {
+            "Name": {
+              "type": "string"
+            },
+            "Text": {
+              "type": "string"
+            },
+            "Value": {
+              "type": "string"
+            }
+          }
+        },
+        "Unit": {
+          "type": "object",
+          "properties": {
+            "Name": {
+              "type": "string"
+            },
+            "Text": {
+              "type": "string"
+            },
+            "Value": {
+              "type": "string"
+            }
+          }
+        },
+        "VatRate": {
+          "type": "object",
+          "properties": {
+            "Name": {
+              "type": "string"
+            },
+            "Text": {
+              "type": "string"
+            },
+            "Value": {
+              "type": "string"
+            }
+          }
+        },
+        "DeliveryDate": {
+          "type": "object",
+          "properties": {
+            "Name": {
+              "type": "string"
+            },
+            "Text": {
+              "type": "string"
+            },
+            "Value": {
+              "type": "string"
+            }
+          }
+        },
+        "Discount": {
+          "type": "object",
+          "properties": {
+            "Name": {
+              "type": "string"
+            },
+            "Text": {
+              "type": "string"
+            },
+            "Value": {
+              "type": "string"
+            }
+          }
+        },
+        "PositionId": {
+          "type": "object",
+          "properties": {
+            "Name": {
+              "type": "string"
+            },
+            "Text": {
+              "type": "string"
+            },
+            "Value": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
     "ExtractInvoiceDataInput": {
       "type": "object",
-      "required": ["Invoice"],
+      "required": [
+        "Invoice"
+      ],
       "properties": {
         "Filter": {
           "type": "number",
