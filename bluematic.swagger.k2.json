@@ -8,12 +8,8 @@
   },
   "host": "api.bludelta.ai",
   "basePath": "/v1-18",
-  "schemes": [
-    "https"
-  ],
-  "produces": [
-    "application/json"
-  ],
+  "schemes": ["https"],
+  "produces": ["application/json"],
   "security": [
     {
       "myAPIAuth": []
@@ -22,9 +18,7 @@
   "paths": {
     "/invoicedetail/detect": {
       "post": {
-        "tags": [
-          "invoicedetail"
-        ],
+        "tags": ["invoicedetail"],
         "summary": "Extracts invoice",
         "description": "Extracts invoice features of a provided invoice.",
         "operationId": "ExtractInvoiceData",
@@ -39,9 +33,7 @@
             }
           }
         ],
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "Successful Response",
@@ -480,9 +472,7 @@
     },
     "ExtractInvoiceDataInput": {
       "type": "object",
-      "required": [
-        "Invoice"
-      ],
+      "required": ["Invoice"],
       "properties": {
         "Filter": {
           "type": "number",
@@ -492,7 +482,7 @@
         },
         "Invoice": {
           "type": "string",
-          "format": "byte",
+          "format": "string",
           "x-ntx-summary": "Invoice file",
           "description": "The file to be OCR's"
         }
